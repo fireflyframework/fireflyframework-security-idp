@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,28 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.fireflyframework.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+import java.util.UUID;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TokenResponse {
-    @JsonProperty("access_token")
-    private String accessToken;
-
-    @JsonProperty("refresh_token")
-    private String refreshToken;
-
-    @JsonProperty("id_token")
-    private String idToken;
-
-    @JsonProperty("token_type")
-    private String tokenType;
-
-    @JsonProperty("expires_in")
-    private Long expiresIn;
-
-    @JsonProperty("scope")
-    private String scope;
+public class CreateUserRequest {
+    private String username;
+    private String email;
+    private String password;
+    private String givenName;
+    private String familyName;
+    private UUID partyId;
+    private UserRoleEnum userRole;
+    private Map<String, Object> attributes;
 }

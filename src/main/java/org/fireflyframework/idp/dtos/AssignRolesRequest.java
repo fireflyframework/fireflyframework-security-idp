@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,19 +25,13 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Request to create one or more roles in the IdP/realm.
+ * Request to assign or remove roles from a user.
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateRolesRequest {
-    /** Optional client or realm context, provider-specific. */
-    private String context;
-
-    /** Names of the roles to create. */
+public class AssignRolesRequest {
+    private String userId;
     private List<String> roleNames;
-
-    /** Optional description applied to all roles, provider permitting. */
-    private String description;
 }

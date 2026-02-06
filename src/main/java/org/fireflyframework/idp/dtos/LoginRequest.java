@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,22 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.Map;
-
 /**
- * Payload to update an existing user in the IdP.
- * Fields left as null should be treated by implementations as "do not modify".
+ * Request for performing a login (Resource Owner Password Credentials or similar).
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserRequest {
-    /** Provider-specific unique identifier of the user to update. */
-    private String userId;
-    private String email;
-    private String givenName;
-    private String familyName;
-    private Boolean enabled;
-    private Map<String, List<String>> attributes;
+public class LoginRequest {
+    private String username;
+    private String password;
+    private String scope;
 }

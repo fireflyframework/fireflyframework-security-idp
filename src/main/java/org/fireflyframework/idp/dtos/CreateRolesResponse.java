@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,22 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
-import com.firefly.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
-import java.util.UUID;
+import java.util.List;
 
+/**
+ * Response containing the roles created by the IdP.
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserRequest {
-    private String username;
-    private String email;
-    private String password;
-    private String givenName;
-    private String familyName;
-    private UUID partyId;
-    private UserRoleEnum userRole;
-    private Map<String, Object> attributes;
+public class CreateRolesResponse {
+    private List<String> createdRoleNames;
 }

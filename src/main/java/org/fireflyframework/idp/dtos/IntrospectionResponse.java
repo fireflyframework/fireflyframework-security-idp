@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,33 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.fireflyframework.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MfaChallengeResponse {
-    private String challengeId;
-    private String deliveryMethod; // e.g., SMS, EMAIL, TOTP
-    private String destination;    // e.g., masked phone/email
-    private Instant expiresAt;
+public class IntrospectionResponse {
+    private boolean active;
+    private String scope;
+    private String username;
+    private Long exp;
+    private Long iat;
+    private String sub;
+    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+    private List<String> aud;
+    private String iss;
+    private String jti;
+    private UUID partyId;
+    private UserRoleEnum userRole;
 }

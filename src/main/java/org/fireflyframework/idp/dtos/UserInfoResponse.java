@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,8 +26,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MfaVerifyRequest {
-    private String challengeId;
-    private String code;
-    private String userId;
+public class UserInfoResponse {
+    private String sub;
+    private String email;
+    private Boolean emailVerified;
+    private String name;
+    private String preferredUsername;
+    private String givenName;
+    private String familyName;
 }

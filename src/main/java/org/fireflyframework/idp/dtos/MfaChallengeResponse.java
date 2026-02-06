@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,22 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfoResponse {
-    private String sub;
-    private String email;
-    private Boolean emailVerified;
-    private String name;
-    private String preferredUsername;
-    private String givenName;
-    private String familyName;
+public class MfaChallengeResponse {
+    private String challengeId;
+    private String deliveryMethod; // e.g., SMS, EMAIL, TOTP
+    private String destination;    // e.g., masked phone/email
+    private Instant expiresAt;
 }

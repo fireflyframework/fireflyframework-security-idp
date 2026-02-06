@@ -1,4 +1,4 @@
-package com.firefly.idp.dtos.enums;
+package org.fireflyframework.idp.dtos.enums;
 
 public enum UserRoleEnum {
     AGENT,

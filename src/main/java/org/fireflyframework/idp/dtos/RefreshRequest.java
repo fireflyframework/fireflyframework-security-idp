@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,19 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
-
-/**
- * Result of an update user operation.
- */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserResponse {
-    private String id;
-    private String username;
-    private String email;
-    private Instant updatedAt;
+public class RefreshRequest {
+    @JsonProperty("refresh_token")
+    private String refreshToken;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,25 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.firefly.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.UUID;
+import java.time.Instant;
 
+/**
+ * Result of an update user operation.
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IntrospectionResponse {
-    private boolean active;
-    private String scope;
+public class UpdateUserResponse {
+    private String id;
     private String username;
-    private Long exp;
-    private Long iat;
-    private String sub;
-    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-    private List<String> aud;
-    private String iss;
-    private String jti;
-    private UUID partyId;
-    private UserRoleEnum userRole;
+    private String email;
+    private Instant updatedAt;
 }

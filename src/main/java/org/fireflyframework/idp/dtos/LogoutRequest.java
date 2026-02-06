@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Firefly Software Solutions Inc
+ * Copyright 2024-2026 Firefly Software Solutions Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,23 @@
  */
 
 
-package com.firefly.idp.dtos;
+package org.fireflyframework.idp.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Request payload for logging out / revoking tokens.
+ * Contains both access and refresh tokens so providers can invalidate both
+ * sessions according to their capabilities.
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RefreshRequest {
-    @JsonProperty("refresh_token")
+public class LogoutRequest {
+    private String accessToken;
     private String refreshToken;
 }

@@ -1,4 +1,4 @@
-# Firefly OpenCore Banking Platform - IDP Library
+# Firefly Framework - IDP Library
 
 A small, provider-agnostic interface to standardize Identity Provider (IdP) operations across platforms such as Keycloak, AWS Cognito, Okta, Auth0, and others. It exposes a consistent, reactive API so your application code remains clean and portable, while concrete implementations translate calls into provider‑specific requests.
 
@@ -41,15 +41,15 @@ Add the dependency to your Maven project. Replace the version as appropriate.
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-idp</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-idp</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
 If you are using Gradle (Kotlin DSL):
 ```kotlin
-implementation("com.firefly:lib-idp:1.0.0-SNAPSHOT")
+implementation("org.fireflyframework:fireflyframework-idp:1.0.0-SNAPSHOT")
 ```
 
 Note: This module provides only the abstraction (interface + DTOs). You will need an implementation module for your chosen provider.
@@ -119,7 +119,7 @@ Mono<ResponseEntity<TokenResponse>> result = idpAdapter.login(
 ```
 
 ## 6. API Summary
-The main entry point is `com.firefly.idp.adapter.IdpAdapter`.
+The main entry point is `org.fireflyframework.idp.adapter.IdpAdapter`.
 
 Basic operations:
 - `Mono<ResponseEntity<TokenResponse>> login(LoginRequest request)`
@@ -139,7 +139,7 @@ Advanced operations:
 - `void revokeSession(String sessionId)`
 - `Mono<ResponseEntity<List<String>>> getRoles(String userId)`
 
-DTOs are located under `com.firefly.idp.dtos` and cover requests and responses for the above methods.
+DTOs are located under `org.fireflyframework.idp.dtos` and cover requests and responses for the above methods.
 
 ## 7. Implementation Notes
 - Error Handling: Return appropriate HTTP status codes in `ResponseEntity` (e.g., 401 for invalid credentials, 400 for invalid requests, 500 for unexpected provider errors). Wrap provider errors consistently.
