@@ -31,7 +31,7 @@ By targeting this interface, you can swap identity providers without changing th
 - Spring-friendly responses via `ResponseEntity`
 
 ## 3. Technology Stack
-- Java 21
+- Java 25 (default, Java 21+ compatible)
 - Reactor Core / Spring WebFlux (`Mono`, `ResponseEntity`)
 - Lombok for DTO boilerplate reduction
 - Maven build
