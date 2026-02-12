@@ -51,7 +51,7 @@ Provider implementations (AWS Cognito, Keycloak, Internal DB) are published as s
 <dependency>
     <groupId>org.fireflyframework</groupId>
     <artifactId>fireflyframework-idp</artifactId>
-    <version>26.02.02</version>
+    <version>26.02.03</version>
 </dependency>
 ```
 
