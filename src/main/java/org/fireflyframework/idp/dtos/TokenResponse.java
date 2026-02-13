@@ -45,4 +45,11 @@ public class TokenResponse {
 
     @JsonProperty("scope")
     private String scope;
+
+    @JsonProperty("mfa_required")
+    @Builder.Default
+    private boolean mfaRequired = false;
+
+    @JsonProperty("mfa_user_id")
+    private String mfaUserId;
 }
