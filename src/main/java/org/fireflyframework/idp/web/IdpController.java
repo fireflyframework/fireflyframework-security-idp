@@ -15,6 +15,7 @@
  */
 package org.fireflyframework.idp.web;
 
+import jakarta.validation.Valid;
 import org.fireflyframework.idp.adapter.IdpAdapter;
 import org.fireflyframework.idp.dtos.*;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +60,11 @@ public class IdpController {
     @PostMapping("/revoke-refresh-token")
     public Mono<Void> revokeRefreshToken(@RequestParam("refreshToken") String refreshToken) {
         return idpAdapter.revokeRefreshToken(refreshToken);
+    }
+
+    @PostMapping("/register")
+    public Mono<ResponseEntity<CreateUserResponse>> registerUser(@Valid @RequestBody RegisterUserRequest request) {
+        return idpAdapter.registerUser(request);
     }
 
     @PostMapping("/admin/users")

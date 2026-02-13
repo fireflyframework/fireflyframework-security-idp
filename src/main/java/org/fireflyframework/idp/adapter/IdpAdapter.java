@@ -189,4 +189,26 @@ public interface IdpAdapter {
      * @param request user id and role names to remove
      */
     Mono<Void> removeRolesFromUser(AssignRolesRequest request);
+
+    /**
+     * Register a new user via self-service (public, no admin auth required).
+     *
+     * <p>The default implementation converts the registration request into a
+     * {@link CreateUserRequest} and delegates to {@link #createUser(CreateUserRequest)}.
+     * Adapters may override this to use provider-specific self-service APIs
+     * (e.g., Cognito {@code SignUp}, Keycloak self-registration).
+     *
+     * @param request the self-service registration details
+     * @return a reactive publisher with the created user's summary
+     */
+    default Mono<ResponseEntity<CreateUserResponse>> registerUser(RegisterUserRequest request) {
+        CreateUserRequest createRequest = CreateUserRequest.builder()
+                .username(request.getUsername())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .givenName(request.getFirstName())
+                .familyName(request.getLastName())
+                .build();
+        return createUser(createRequest);
+    }
 }
