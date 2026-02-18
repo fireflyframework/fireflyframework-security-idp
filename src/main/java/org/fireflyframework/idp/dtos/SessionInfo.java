@@ -33,6 +33,7 @@ public class SessionInfo {
     private String userId;
     private Instant createdAt;
     private Instant lastAccessAt;
+    private Instant expiresAt;
     private String ipAddress;
     private String userAgent;
 }
