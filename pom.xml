@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <artifactId>fireflyframework-idp</artifactId>
+    <artifactId>fireflyframework-security-idp</artifactId>
     <version>26.06.01</version>
     <packaging>jar</packaging>
 

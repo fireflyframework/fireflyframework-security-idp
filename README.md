@@ -1,6 +1,6 @@
 # Firefly Framework - Identity Provider (IDP)
 
-[![CI](https://github.com/fireflyframework/fireflyframework-idp/actions/workflows/ci.yml/badge.svg)](https://github.com/fireflyframework/fireflyframework-idp/actions/workflows/ci.yml)
+[![CI](https://github.com/fireflyframework/fireflyframework-security-idp/actions/workflows/ci.yml/badge.svg)](https://github.com/fireflyframework/fireflyframework-security-idp/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-21%2B-orange.svg)](https://openjdk.org)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green.svg)](https://spring.io/projects/spring-boot)
@@ -39,10 +39,10 @@ The concrete provider is selected at runtime with the `firefly.idp.provider` pro
 
 | Provider value | Adapter module | Backend |
 | --- | --- | --- |
-| `keycloak` | [`fireflyframework-idp-keycloak`](https://github.com/fireflyframework/fireflyframework-idp-keycloak) | Keycloak Admin API + token endpoint |
-| `cognito` | [`fireflyframework-idp-aws-cognito`](https://github.com/fireflyframework/fireflyframework-idp-aws-cognito) | AWS Cognito User Pools |
-| `azure-ad` | [`fireflyframework-idp-azure-ad`](https://github.com/fireflyframework/fireflyframework-idp-azure-ad) | Microsoft Entra ID (Azure AD) |
-| `internal-db` | [`fireflyframework-idp-internal-db`](https://github.com/fireflyframework/fireflyframework-idp-internal-db) | Local database-backed identity store |
+| `keycloak` | [`fireflyframework-security-idp-keycloak`](https://github.com/fireflyframework/fireflyframework-security-idp-keycloak) | Keycloak Admin API + token endpoint |
+| `cognito` | [`fireflyframework-security-idp-aws-cognito`](https://github.com/fireflyframework/fireflyframework-security-idp-aws-cognito) | AWS Cognito User Pools |
+| `azure-ad` | [`fireflyframework-security-idp-azure-ad`](https://github.com/fireflyframework/fireflyframework-security-idp-azure-ad) | Microsoft Entra ID (Azure AD) |
+| `internal-db` | [`fireflyframework-security-idp-internal-db`](https://github.com/fireflyframework/fireflyframework-security-idp-internal-db) | Local database-backed identity store |
 
 ## Features
 
@@ -74,13 +74,13 @@ Add the core abstraction together with exactly one provider adapter. The version
     <!-- Core IDP abstraction (this module) -->
     <dependency>
         <groupId>org.fireflyframework</groupId>
-        <artifactId>fireflyframework-idp</artifactId>
+        <artifactId>fireflyframework-security-idp</artifactId>
     </dependency>
 
     <!-- Choose one provider adapter -->
     <dependency>
         <groupId>org.fireflyframework</groupId>
-        <artifactId>fireflyframework-idp-keycloak</artifactId>
+        <artifactId>fireflyframework-security-idp-keycloak</artifactId>
     </dependency>
 </dependencies>
 ```
@@ -90,7 +90,7 @@ If you are not inheriting the Firefly parent, pin the version explicitly:
 ```xml
 <dependency>
     <groupId>org.fireflyframework</groupId>
-    <artifactId>fireflyframework-idp</artifactId>
+    <artifactId>fireflyframework-security-idp</artifactId>
     <version>26.05.08</version>
 </dependency>
 ```
@@ -110,8 +110,8 @@ With the chosen adapter on the classpath, its `IdpAdapter` bean is auto-configur
 **2. Or consume the `IdpAdapter` directly** from your own services:
 
 ```java
-import org.fireflyframework.idp.adapter.IdpAdapter;
-import org.fireflyframework.idp.dtos.*;
+import org.fireflyframework.security.idp.adapter.IdpAdapter;
+import org.fireflyframework.security.idp.dtos.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -207,7 +207,7 @@ Adapters wrap their authentication calls with `IdpMetrics.timedAuthentication(pr
 ## Documentation
 
 - Firefly Framework documentation hub and module catalog: [github.com/fireflyframework](https://github.com/fireflyframework)
-- Provider adapters: [Keycloak](https://github.com/fireflyframework/fireflyframework-idp-keycloak) · [AWS Cognito](https://github.com/fireflyframework/fireflyframework-idp-aws-cognito) · [Azure AD](https://github.com/fireflyframework/fireflyframework-idp-azure-ad) · [Internal DB](https://github.com/fireflyframework/fireflyframework-idp-internal-db)
+- Provider adapters: [Keycloak](https://github.com/fireflyframework/fireflyframework-security-idp-keycloak) · [AWS Cognito](https://github.com/fireflyframework/fireflyframework-security-idp-aws-cognito) · [Azure AD](https://github.com/fireflyframework/fireflyframework-security-idp-azure-ad) · [Internal DB](https://github.com/fireflyframework/fireflyframework-security-idp-internal-db)
 
 ## Contributing
 
