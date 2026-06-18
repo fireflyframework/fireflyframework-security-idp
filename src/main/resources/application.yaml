@@ -1,6 +1,6 @@
 spring:
   application:
-    name: fireflyframework-idp
+    name: fireflyframework-security-idp
     version: 1.0.0
     description: Identity Provider Adapter
     team:
