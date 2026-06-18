@@ -18,15 +18,18 @@
 package org.fireflyframework.idp.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.fireflyframework.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
+/**
+ * RFC 7662 token introspection response. Product-specific claims are returned generically in
+ * {@link #attributes}; the framework keeps no product domain (no party, contract, or business role).
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -42,6 +45,5 @@ public class IntrospectionResponse {
     private List<String> aud;
     private String iss;
     private String jti;
-    private UUID partyId;
-    private UserRoleEnum userRole;
+    private Map<String, Object> attributes;
 }
