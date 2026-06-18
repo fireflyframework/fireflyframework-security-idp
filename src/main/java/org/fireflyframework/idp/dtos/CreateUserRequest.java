@@ -17,15 +17,18 @@
 
 package org.fireflyframework.idp.dtos;
 
-import org.fireflyframework.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Map;
-import java.util.UUID;
 
+/**
+ * Vendor-neutral request to provision a user. Product-specific identity attributes (e.g. a party
+ * or contract reference) are carried generically in {@link #attributes} — the framework defines no
+ * product domain of its own.
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -36,7 +39,5 @@ public class CreateUserRequest {
     private String password;
     private String givenName;
     private String familyName;
-    private UUID partyId;
-    private UserRoleEnum userRole;
     private Map<String, Object> attributes;
 }
