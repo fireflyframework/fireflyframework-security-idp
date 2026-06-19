@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @Data
 @Validated
-@ConfigurationProperties(prefix = "firefly.idp")
+@ConfigurationProperties(prefix = "firefly.security.idp")
 public class IdpProperties {
 
     @NotBlank(message = "IDP provider must be specified (keycloak, cognito, or internal-db)")

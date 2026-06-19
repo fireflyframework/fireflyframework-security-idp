@@ -33,7 +33,7 @@ Beyond the contract, this module ships the **shared infrastructure** every adapt
 - A ready-to-use reactive `IdpController` (auto-mounted under `/idp`) that exposes every `IdpAdapter` operation over HTTP — it is registered automatically by `IdpWebAutoConfiguration` as soon as an `IdpAdapter` bean is present in a reactive web application.
 - Cross-cutting `IdpMetrics` (Micrometer) auto-configured via `IdpObservabilityAutoConfiguration`, giving uniform authentication, token and error metrics regardless of which provider is active.
 
-The concrete provider is selected at runtime with the `firefly.idp.provider` property; each adapter activates itself with `@ConditionalOnProperty(name = "firefly.idp.provider", havingValue = "<provider>")`. You depend on this core plus exactly one provider adapter.
+The concrete provider is selected at runtime with the `firefly.security.idp.provider` property; each adapter activates itself with `@ConditionalOnProperty(name = "firefly.security.idp.provider", havingValue = "<provider>")`. You depend on this core plus exactly one provider adapter.
 
 ### Provider adapters
 
@@ -55,7 +55,7 @@ The concrete provider is selected at runtime with the `firefly.idp.provider` pro
 - **Drop-in REST controller** — `IdpController` exposes all of the above under `/idp` with zero boilerplate, auto-configured only when an `IdpAdapter` bean exists in a reactive web app.
 - **Built-in observability** — `IdpMetrics` records authentication counts/latency, tokens issued/refreshed and errors, tagged by `provider`.
 - **Vendor-neutral DTOs** — a complete, validated DTO surface (`jakarta.validation`) shared by all adapters.
-- **Pluggable by property** — switch providers with `firefly.idp.provider` and a single dependency swap; no code changes.
+- **Pluggable by property** — switch providers with `firefly.security.idp.provider` and a single dependency swap; no code changes.
 
 ## Requirements
 
@@ -143,7 +143,7 @@ Because every operation returns a Reactor `Mono`, the adapter composes cleanly i
 
 ## Configuration
 
-This core module exposes a single property under the `firefly.idp` prefix; provider-specific keys (e.g. `firefly.idp.keycloak.*`, `firefly.idp.cognito.*`) are documented by each adapter module.
+This core module exposes a single property under the `firefly.security.idp` prefix; provider-specific keys (e.g. `firefly.security.idp.keycloak.*`, `firefly.security.idp.cognito.*`) are documented by each adapter module.
 
 ```yaml
 firefly:
@@ -156,7 +156,7 @@ firefly:
 
 | Property | Default | Description |
 | --- | --- | --- |
-| `firefly.idp.provider` | _(none, required)_ | Selects the active IDP adapter. One of `keycloak`, `cognito`, `azure-ad`, `internal-db`. Validated as `@NotBlank` via `IdpProperties`. |
+| `firefly.security.idp.provider` | _(none, required)_ | Selects the active IDP adapter. One of `keycloak`, `cognito`, `azure-ad`, `internal-db`. Validated as `@NotBlank` via `IdpProperties`. |
 | `firefly.observability.metrics.enabled` | `true` | When `true` (or absent), registers the `IdpMetrics` bean. Set to `false` to disable IDP metrics. |
 
 Auto-configuration entry points (`META-INF/spring/...AutoConfiguration.imports`):
@@ -196,11 +196,11 @@ When the `IdpController` is auto-mounted, the following endpoints are exposed un
 
 `IdpMetrics` (auto-configured) records, all tagged by `provider`:
 
-- `firefly.idp.authentications` — total auth attempts, tagged `status=success|failure`
-- `firefly.idp.authentication.duration` — authentication latency timer
-- `firefly.idp.token.issued` — tokens issued, tagged `token.type`
-- `firefly.idp.token.refreshed` — token refreshes
-- `firefly.idp.errors` — failed IDP operations, tagged `operation`, `error.type`
+- `firefly.security.idp.authentications` — total auth attempts, tagged `status=success|failure`
+- `firefly.security.idp.authentication.duration` — authentication latency timer
+- `firefly.security.idp.token.issued` — tokens issued, tagged `token.type`
+- `firefly.security.idp.token.refreshed` — token refreshes
+- `firefly.security.idp.errors` — failed IDP operations, tagged `operation`, `error.type`
 
 Adapters wrap their authentication calls with `IdpMetrics.timedAuthentication(provider, mono)` to get success/failure counters and the latency timer for free.
 
