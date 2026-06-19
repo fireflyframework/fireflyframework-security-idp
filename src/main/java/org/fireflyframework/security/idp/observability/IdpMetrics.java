@@ -25,11 +25,11 @@ import reactor.core.publisher.Mono;
  * <p>
  * Records:
  * <ul>
- *     <li>{@code firefly.idp.authentications} — total auth attempts, tagged by {@code provider}, {@code status=success|failure}</li>
- *     <li>{@code firefly.idp.authentication.duration} — auth latency timer, tagged by {@code provider}</li>
- *     <li>{@code firefly.idp.token.issued} — total tokens issued, tagged by {@code provider}, {@code token.type}</li>
- *     <li>{@code firefly.idp.token.refreshed} — token refresh count, tagged by {@code provider}</li>
- *     <li>{@code firefly.idp.errors} — failed IDP operations, tagged by {@code operation}, {@code error.type}</li>
+ *     <li>{@code firefly.security.idp.authentications} — total auth attempts, tagged by {@code provider}, {@code status=success|failure}</li>
+ *     <li>{@code firefly.security.idp.authentication.duration} — auth latency timer, tagged by {@code provider}</li>
+ *     <li>{@code firefly.security.idp.token.issued} — total tokens issued, tagged by {@code provider}, {@code token.type}</li>
+ *     <li>{@code firefly.security.idp.token.refreshed} — token refresh count, tagged by {@code provider}</li>
+ *     <li>{@code firefly.security.idp.errors} — failed IDP operations, tagged by {@code operation}, {@code error.type}</li>
  * </ul>
  */
 public class IdpMetrics extends FireflyMetricsSupport {
