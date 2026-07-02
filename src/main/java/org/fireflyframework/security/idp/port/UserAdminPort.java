@@ -41,6 +41,19 @@ public interface UserAdminPort {
         return Mono.error(new UnsupportedOperationException("resetPassword is not supported by this IdP provider"));
     }
 
+    /**
+     * Assigns a freshly generated, single-use <em>temporary</em> password to a user and returns it, so
+     * the caller can relay it out-of-band (no email/SMTP needed). The IdP is expected to force a
+     * password change on the user's next login. Intended for admin-mediated onboarding and resets.
+     *
+     * @param userId the IdP's user id (e.g. the Keycloak {@code sub})
+     * @return the generated temporary password
+     */
+    default Mono<String> assignTemporaryPassword(String userId) {
+        return Mono.error(new UnsupportedOperationException(
+                "assignTemporaryPassword is not supported by this IdP provider"));
+    }
+
     default Mono<Void> deleteUser(String userId) {
         return Mono.error(new UnsupportedOperationException("deleteUser is not supported by this IdP provider"));
     }
