@@ -21,6 +21,7 @@ import org.fireflyframework.security.idp.dtos.CreateRolesRequest;
 import org.fireflyframework.security.idp.dtos.CreateRolesResponse;
 import org.fireflyframework.security.idp.dtos.CreateScopeRequest;
 import org.fireflyframework.security.idp.dtos.CreateScopeResponse;
+import org.fireflyframework.security.idp.dtos.UpdateRoleRequest;
 import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 
@@ -49,5 +50,18 @@ public interface RoleScopePort {
 
     default Mono<Void> removeRolesFromUser(AssignRolesRequest request) {
         return Mono.error(new UnsupportedOperationException("removeRolesFromUser is not supported by this IdP provider"));
+    }
+
+    /** Lists every realm role name (the role catalog), independent of any user. */
+    default Mono<ResponseEntity<List<String>>> listRoles() {
+        return Mono.error(new UnsupportedOperationException("listRoles is not supported by this IdP provider"));
+    }
+
+    default Mono<Void> deleteRole(String roleName) {
+        return Mono.error(new UnsupportedOperationException("deleteRole is not supported by this IdP provider"));
+    }
+
+    default Mono<Void> updateRole(UpdateRoleRequest request) {
+        return Mono.error(new UnsupportedOperationException("updateRole is not supported by this IdP provider"));
     }
 }
